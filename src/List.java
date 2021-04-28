@@ -1,7 +1,11 @@
 public class List<T extends Comparable> {
-    private T[] values = (T[]) new Object[10]; //Массив значений
+    private T[] values; //Массив значений
     private int size = 0; //Размер списка
     private int last = -1; //Последний заполненный элемент
+
+    List(T[] array) {
+        values = array;
+    }
 
     //Возвращает позицию "после последнего"
     public int end() {

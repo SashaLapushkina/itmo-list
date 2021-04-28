@@ -12,26 +12,10 @@ public class Main {
                 new Rational(4, 6)
         };
 
-        List<Integer> intList = new List<>();
-        int p = intList.first();
-        for (Integer val: intArr){
-            intList.insert(val, p);
-            p = intList.next(p);
-        }
+        List<Integer> intList = new List<Integer>(intArr);
+        List<String> strList = new List<String>(strArr);
+        List<Rational> ratList = new List<Rational>(ratArr);
 
-        List<String> strList = new List<>();
-        p = strList.first();
-        for (String val: strArr){
-            strList.insert(val, p);
-            p = strList.next(p);
-        }
-
-        List<Rational> ratList = new List<>();
-        p = ratList.first();
-        for (Rational val: ratArr){
-            ratList.insert(val, p);
-            p = ratList.next(p);
-        }
 
         intList.printList();
         deleteDuplicates(intList);

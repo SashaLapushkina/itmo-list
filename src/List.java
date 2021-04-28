@@ -1,11 +1,7 @@
-public class List<T> {
-    private T[] values; //Массив значений
+public class List<T extends Comparable> {
+    private T[] values = (T[]) new Object[10]; //Массив значений
     private int size = 0; //Размер списка
     private int last = -1; //Последний заполненный элемент
-
-    public List(T[] values) {
-        this.values = values;
-    }
 
     //Возвращает позицию "после последнего"
     public int end() {
@@ -77,7 +73,8 @@ public class List<T> {
     //Печать
     public void printList() {
         for (int i = first(); i < end(); i++) {
-            System.out.print(values[i]);
+            System.out.print(values[i] + " ");
         }
+        System.out.println();
     }
 }

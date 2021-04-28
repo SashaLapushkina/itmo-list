@@ -1,4 +1,4 @@
-public class Rational implements Comparable{
+public class Rational implements Comparable<Rational>{
     int numerator;
     int denominator;
 
@@ -26,12 +26,17 @@ public class Rational implements Comparable{
 
     @Override
     public String toString() {
-
-        return " " + "/";
+        String total;
+        String fraction;
+        if (numerator < denominator) total = "";
+        else total = numerator / denominator + " ";
+        if (numerator % denominator == 0) fraction = "";
+        else fraction = numerator % denominator + "/" + denominator + " ";
+        return total + fraction;
     }
 
     @Override
-    public int compareTo(Object o) {
-        return 0;
+    public int compareTo(Rational num) {
+        return this.numerator * num.denominator - num.numerator * this.denominator;
     }
 }

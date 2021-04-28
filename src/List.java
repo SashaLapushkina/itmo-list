@@ -5,6 +5,8 @@ public class List<T extends Comparable> {
 
     List(T[] array) {
         values = array;
+        size = array.length;
+        last = size - 1;
     }
 
     //Возвращает позицию "после последнего"

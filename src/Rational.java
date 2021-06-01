@@ -20,12 +20,13 @@ public class Rational implements Comparable<Rational>{
 
     //НОД
     private int gcd(int a, int b){
-        while (b !=0) {
-            int temp = a % b;
-            a = b;
-            b = temp;
+        int temp = a % b;
+        while (temp != 0) {
+           a = b;
+           b = temp;
+           temp = a % b;
         }
-        return a;
+        return b;
     }
 
     private String sign(int x) {

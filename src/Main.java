@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Integer[] intArr = {1, 1, 1, 1, 2, 1, 3, 3, 4, 2};
+        Integer[] intArr = {1, 1, 1, 1, 1, 1, 1, 1, 1, 1};
         String[] strArr = {"a", "b", "a", "c", "c", "d", "b"};
         Rational[] ratArr = {
                 new Rational(1, 2),

@@ -6,7 +6,6 @@ public class List<T extends Comparable> {
     List(T[] array) {
         values = array;
         size = array.length;
-        last = size - 1;
     }
 
     //Возвращает позицию "после последнего"
@@ -14,71 +13,65 @@ public class List<T extends Comparable> {
         return last + 1;
     }
 
-    //Вставить x после на место p
+    //Вставить x на место p
     public void insert(T x, int p) {
-        if (p <= end() && p >= 0) {
-            for (int i = end(); i >= p + 1; ) { //Сдвигаем значения, начиная с p, на одно вправо
-                values[i] = values[--i];
+        if (last < size - 1 && p <= last + 1 && p >= 0) {
+            for (int i = last + 1; i >= p + 1; i--) { //Сдвигаем значения, начиная с p, на одно вправо
+                values[i] = values[i - 1];
             }
             values[p] = x;
             last++;
-            size++;
         }
     }
 
     //Возвращают позицию x
     public int locate(T x) {
         int i = 0;
-        while (values[i] != x && i < end()) i++;
+        while (values[i] != x && i <= last) i++;
         return i;
     }
 
     //Возвращает элемент в позиции p
     public T retrieve(int p) {
-        if (p >= end() || p < 0) throw new MyException();
+        if (p > last || p < 0) throw new MyException();
         return values[p];
     }
 
     //Удаляет элемент в позиции p
     public void delete(int p) {
-        if (p < end() && p >= 0) {
-            for (int i = p; i < last; ) {
-                values[i] = values[++i];
+        if (p <= last && p >= 0) {
+            for (int i = p; i < last; i++) {
+                values[i] = values[i + 1];
             }
             last--;
-            size--;
         }
     }
 
     //Возвращает следующую за p позицию
     public int next(int p){
-        if (p >= end() || p < 0) throw new MyException();
-        //if (p == last) return end();
+        if (p > last || p < 0) throw new MyException();
         return p + 1;
     }
 
     //Возвращает предшествующую p позицию
     public int previous(int p){
-        if (p >= end() || p <= 0) throw new MyException();
+        if (p > last || p <= 0) throw new MyException();
         return p - 1;
     }
 
     //Делает список пустым
     public void makeNull() {
-        size = 0;
         last = -1;
     }
 
     //Возвращает первую позицию в списке
     public int first() {
-        //if (size == 0) return end();
-        //else
-            return 0;
+        return 0;
     }
 
     //Печать
     public void printList() {
-        for (int i = first(); i < end(); i++) {
+        for (int i = 0; i <= last; i++) {
             System.out.print(values[i] + " ");
         }
         System.out.println();

@@ -4,7 +4,11 @@ public class Rational implements Comparable<Rational>{
 
     Rational(int numerator, int denominator){
         if (denominator == 0) throw new ArithmeticException();
-        int gcd = gcd(numerator, denominator);
+        if (denominator < 0) {
+            numerator *= -1;
+            denominator *= -1;
+        }
+        int gcd = gcd(Math.abs(numerator), denominator);
         this.numerator = numerator / gcd;
         this.denominator = denominator / gcd;
     }
@@ -24,15 +28,20 @@ public class Rational implements Comparable<Rational>{
         return a;
     }
 
+    private String sign(int x) {
+        return x >= 0 ? "" : "-";
+    }
+
     @Override
     public String toString() {
         String total;
         String fraction;
-        if (numerator < denominator) total = "";
-        else total = numerator / denominator + " ";
-        if (numerator % denominator == 0) fraction = "";
-        else fraction = numerator % denominator + "/" + denominator + " ";
-        return total + fraction;
+        int num = Math.abs(numerator);
+        if (num < denominator) total = "";
+        else total = num / denominator + " ";
+        if (num % denominator == 0) fraction = "";
+        else fraction = num % denominator + "/" + denominator + " ";
+        return sign(numerator) + total + fraction;
     }
 
     @Override
